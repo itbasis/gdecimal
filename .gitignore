@@ -1,0 +1,15 @@
+.DS_Store
+
+tmp.*
+
+# Go
+bin/
+junit-report.xml
+.coverage.out
+.coverage-*.out
+
+# JetBrains
+.idea/*
+!.idea/vcs.xml
+!.idea/protobuf.xml
+!.idea/externalDependencies.xml
