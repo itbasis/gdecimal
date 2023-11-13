@@ -1,10 +1,9 @@
 package gdecimal
 
 import (
-	"github.com/itbasis/gdecimal/matchers"
-	"github.com/shopspring/decimal"
+	"github.com/itbasis/gdecimal/internal/matchers"
 )
 
-func BeDecimalEquivalentTo(expect decimal.Decimal) *matchers.BeEquivalentToMatcher {
+func BeDecimalEquivalentTo(expect interface{}) *matchers.BeEquivalentToMatcher {
 	return &matchers.BeEquivalentToMatcher{Expected: expect}
 }

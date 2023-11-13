@@ -1,4 +1,4 @@
-package matchers_test
+package converter_test
 
 import (
 	"testing"
@@ -7,8 +7,8 @@ import (
 	. "github.com/onsi/gomega"    //nolint:revive
 )
 
-func TestDecimalBeEquivalentToMatcher(t *testing.T) {
+func TestConverter(t *testing.T) {
 	RegisterFailHandler(Fail)
 
-	RunSpecs(t, "DecimalBeEquivalentToMatcher Suite")
+	RunSpecs(t, "Converter Suite")
 }

@@ -1,34 +1,26 @@
 package matchers
 
 import (
+	"github.com/itbasis/gdecimal/internal/converter"
 	"github.com/onsi/gomega/format"
-
-	"github.com/shopspring/decimal"
 )
 
 type BeEquivalentToMatcher struct {
-	Expected decimal.Decimal
+	Expected interface{}
 }
 
 func (matcher *BeEquivalentToMatcher) Match(actual interface{}) (success bool, err error) {
-	if actual == nil {
-		return false, ErrActualNotBeNil
+	actualDecimal, errActual := converter.ToDecimal(actual)
+	if errActual != nil {
+		return false, errActual //nolint:wrapcheck
 	}
 
-	if actualDecimal, ok := actual.(decimal.Decimal); ok {
-		return actualDecimal.Equal(matcher.Expected), nil
+	expectedDecimal, errExpected := converter.ToDecimal(matcher.Expected)
+	if errExpected != nil {
+		return false, errExpected //nolint:wrapcheck
 	}
 
-	if s, ok := actual.(string); ok {
-		actualDecimal, err := decimal.NewFromString(s)
-		if err != nil {
-			return false, ErrFailedConvertStringToDecimal
-		}
-
-		return actualDecimal.Equal(matcher.Expected), nil
-	}
-
-	return false, ErrNotSupportedValue
+	return actualDecimal.Equal(expectedDecimal), nil
 }
 
 func (matcher *BeEquivalentToMatcher) FailureMessage(actual interface{}) (message string) {

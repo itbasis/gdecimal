@@ -5,6 +5,7 @@ tmp.*
 # Go
 bin/
 junit-report.xml
+coverage.html
 .coverage.out
 .coverage-*.out
 

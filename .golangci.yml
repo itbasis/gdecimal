@@ -57,6 +57,9 @@ linters:
 #    - interfacebloat
 
 linters-settings:
+  gomnd:
+    ignored-files:
+      - 'internal/converter/test-data/data\.go$'
   varnamelen:
     ignore-type-assert-ok: true
     ignore-map-index-ok: true

@@ -26,11 +26,11 @@ go-lint: go-dependencies
 	ginkgolinter ./...
 	go vet -vettool=$$(go env GOPATH)/bin/shadow ./...
 
-#go-test: go-dependencies go-lint
-go-test: go-dependencies
+go-test: go-dependencies go-lint
 	gosec ./...
 	ginkgo -r -race --cover --coverprofile=.coverage-ginkgo.out --junit-report=junit-report.xml ./...
 	go tool cover -func=.coverage-ginkgo.out -o=.coverage.out
+	go tool cover -html=.coverage-ginkgo.out -o=coverage.html
 	cat .coverage.out
 
 go-all-tests: go-dependencies go-generate go-lint go-test
