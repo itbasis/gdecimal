@@ -3,8 +3,8 @@ module github.com/itbasis/gdecimal
 go 1.20
 
 require (
-	github.com/onsi/ginkgo/v2 v2.13.2
-	github.com/onsi/gomega v1.30.0
+	github.com/onsi/ginkgo/v2 v2.15.0
+	github.com/onsi/gomega v1.31.1
 	github.com/shopspring/decimal v1.3.1
 )
 
