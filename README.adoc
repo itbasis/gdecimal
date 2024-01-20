@@ -3,7 +3,7 @@
 
 image:https://img.shields.io/github/go-mod/go-version/itbasis/gdecimal[GitHub go.mod Go version]
 image:https://img.shields.io/badge/godoc-reference-blue.svg[link=https://pkg.go.dev/github.com/itbasis/gdecimal]
-image:https://img.shields.io/github/v/tag/itbasis/gdecimal[GitHub tag (with filter)]
+image:https://img.shields.io/github/v/release/itbasis/gdecimal[GitHub Release]
 https://codecov.io/gh/itbasis/gdecimal[image:https://codecov.io/gh/itbasis/gdecimal/graph/badge.svg?token=7nCfsLsE2e[codecov]]
 https://goreportcard.com/report/github.com/itbasis/gdecimal[image:https://goreportcard.com/badge/github.com/itbasis/gdecimal[Go Report Card]]
 
