@@ -16,6 +16,8 @@ Matches can accept Decimal and strings for both the actual and the expected valu
 
 == Sample
 
+link:matchers_example_test.go[] - Link, since GitHub does not support include for AsciiDoc
+
 [source,go]
 ----
 include::matchers_example_test.go[]
