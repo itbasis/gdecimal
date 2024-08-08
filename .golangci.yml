@@ -1,8 +1,44 @@
 #file: noinspection SpellCheckingInspection
 run:
   concurrency: 4
+  modules-download-mode: readonly
 
 # https://golangci-lint.run/usage/configuration/#linters-configuration
+
+issues:
+  exclude-rules:
+    - path: internal/converter/testdata/
+      linters:
+        - revive
+    - path: _test\.go
+      linters:
+        - stylecheck
+        - revive
+
+linters-settings:
+  mnd:
+    ignored-files:
+      - 'internal/converter/test-data/data\.go$'
+  gosec:
+    exclude-generated: true
+    severity: medium
+  varnamelen:
+    ignore-type-assert-ok: false
+    ignore-map-index-ok: false
+    ignore-names:
+      - d
+  ginkgolinter:
+    force-expect-to: true
+  govet:
+    enable-all: true
+    disable:
+      - fieldalignment
+  nolintlint:
+    require-explanation: true
+    require-specific: true
+  lll:
+    line-length: 150
+
 linters:
   disable-all: true
   enable:
@@ -26,10 +62,14 @@ linters:
     - funlen
     - gocritic
     - gocyclo
-    - goerr113
+    - err113
     - goimports
-    - gomnd
+    - mnd
+    - lll
     - gomoddirectives
+    - goprintffuncname
+    #    - gochecknoinits
+    - goconst
     - gosec
     - govet
     - grouper
@@ -37,6 +77,7 @@ linters:
     - nilerr
     - nlreturn
     - noctx
+    - nolintlint
     - prealloc
     - predeclared
     - promlinter
@@ -51,21 +92,8 @@ linters:
     - usestdlibvars
     - varnamelen
     - whitespace
-    - wrapcheck
     - wsl
     - ginkgolinter
     - interfacebloat
-
-linters-settings:
-  gomnd:
-    ignored-files:
-      - 'internal/converter/test-data/data\.go$'
-  varnamelen:
-    ignore-type-assert-ok: true
-    ignore-map-index-ok: true
-    ignore-names:
-      - db
-      - err
-      - e
-      - md
-      - tx
+    - nonamedreturns
+    - stylecheck

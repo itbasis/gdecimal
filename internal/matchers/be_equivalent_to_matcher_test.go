@@ -4,10 +4,10 @@ import (
 	"fmt"
 
 	gdecimalErrors "github.com/itbasis/gdecimal/errors"
-	converterTestData "github.com/itbasis/gdecimal/internal/converter/test-data"
+	converterTestData "github.com/itbasis/gdecimal/internal/converter/testdata"
 	"github.com/itbasis/gdecimal/internal/matchers"
-	. "github.com/onsi/ginkgo/v2" //nolint:revive
-	. "github.com/onsi/gomega"    //nolint:revive
+	. "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/gomega"
 	"github.com/shopspring/decimal"
 )
 

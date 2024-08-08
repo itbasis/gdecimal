@@ -17,7 +17,7 @@ func ToDecimal(value interface{}) (decimal.Decimal, error) {
 	}
 
 	if s, ok := value.(string); ok {
-		d, err := decimal.NewFromString(s) //nolint:varnamelen
+		d, err := decimal.NewFromString(s)
 
 		if err != nil {
 			return d, errors.Join(err, gdecimalErrors.ErrFailedConvertStringToDecimal)

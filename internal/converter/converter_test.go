@@ -3,9 +3,9 @@ package converter_test
 import (
 	gdecimalErrors "github.com/itbasis/gdecimal/errors"
 	"github.com/itbasis/gdecimal/internal/converter"
-	converterTestData "github.com/itbasis/gdecimal/internal/converter/test-data"
-	. "github.com/onsi/ginkgo/v2" //nolint:revive
-	. "github.com/onsi/gomega"    //nolint:revive
+	converterTestData "github.com/itbasis/gdecimal/internal/converter/testdata"
+	. "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/gomega"
 	"github.com/shopspring/decimal"
 )
 

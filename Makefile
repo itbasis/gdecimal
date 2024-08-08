@@ -1,39 +1,26 @@
 go-dependencies:
-	# https://asdf-vm.com/
-	asdf install golang || :
-
-	# https://github.com/securego/gosec
-	go install github.com/securego/gosec/v2/cmd/gosec@latest
-	go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
-	#
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-	go install github.com/nunnatsa/ginkgolinter/cmd/ginkgolinter@latest
+	$(eval GOBIN=$(shell go env GOPATH 2>/dev/null)/bin)
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOBIN) latest
 	#
 	go install github.com/onsi/ginkgo/v2/ginkgo@latest
-	#
-	# go install github.com/vektra/mockery/v2@latest
-	#
-	asdf reshim golang || :
-	#
-	go get -u -t -v ./... || :
+
+go-update: go-dependencies
+	go mod tidy && go get -t -v -u ./...
 
 go-generate: go-dependencies
-	# mockery
 	go generate ./...
+	$(MAKE) go-update
 
-go-lint: go-dependencies
+go-lint:
 	golangci-lint run
-	ginkgolinter ./...
-	go vet -vettool=$$(go env GOPATH)/bin/shadow ./...
 
-go-test: go-dependencies go-lint
-	gosec ./...
-	ginkgo -r -race --cover --coverprofile=.coverage-ginkgo.out --junit-report=junit-report.xml ./...
+go-test: go-lint
+	ginkgo -race --cover --coverprofile=.coverage-ginkgo.out --junit-report=junit-report.xml ./...
 	go tool cover -func=.coverage-ginkgo.out -o=.coverage.out
 	go tool cover -html=.coverage-ginkgo.out -o=coverage.html
 	cat .coverage.out
 
-go-all-tests: go-dependencies go-generate go-lint go-test
+go-all-tests: go-generate go-lint go-test
 
-go-all: go-all-tests
+go-all: go-dependencies go-all-tests
 	go mod tidy || :

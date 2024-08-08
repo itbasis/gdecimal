@@ -9,24 +9,24 @@ type BeLessThanMatcher struct {
 	Expected interface{}
 }
 
-func (matcher *BeLessThanMatcher) Match(actual interface{}) (success bool, err error) {
+func (matcher *BeLessThanMatcher) Match(actual interface{}) (bool, error) {
 	actualDecimal, errActual := converter.ToDecimal(actual)
 	if errActual != nil {
-		return false, errActual //nolint:wrapcheck
+		return false, errActual
 	}
 
 	expectedDecimal, errExpected := converter.ToDecimal(matcher.Expected)
 	if errExpected != nil {
-		return false, errExpected //nolint:wrapcheck
+		return false, errExpected
 	}
 
 	return actualDecimal.LessThan(expectedDecimal), nil
 }
 
-func (matcher *BeLessThanMatcher) FailureMessage(actual interface{}) (message string) {
+func (matcher *BeLessThanMatcher) FailureMessage(actual interface{}) string {
 	return format.Message(actual, "to be less than to", matcher.Expected)
 }
 
-func (matcher *BeLessThanMatcher) NegatedFailureMessage(actual interface{}) (message string) {
+func (matcher *BeLessThanMatcher) NegatedFailureMessage(actual interface{}) string {
 	return format.Message(actual, "not to be less than to", matcher.Expected)
 }

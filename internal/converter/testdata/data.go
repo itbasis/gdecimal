@@ -1,7 +1,7 @@
 package testdata
 
 import (
-	. "github.com/onsi/ginkgo/v2" //nolint:revive
+	. "github.com/onsi/ginkgo/v2"
 	"github.com/shopspring/decimal"
 )
 

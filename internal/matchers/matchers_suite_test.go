@@ -3,8 +3,8 @@ package matchers_test
 import (
 	"testing"
 
-	. "github.com/onsi/ginkgo/v2" //nolint:revive
-	. "github.com/onsi/gomega"    //nolint:revive
+	. "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/gomega"
 )
 
 func TestDecimalBeEquivalentToMatcher(t *testing.T) {
