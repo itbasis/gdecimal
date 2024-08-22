@@ -24,7 +24,7 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
 
-      - run: make go-all-tests
+      - run: make go-test
 
       - name: Test Summary
         uses: test-summary/action@v2

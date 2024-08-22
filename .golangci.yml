@@ -38,62 +38,63 @@ linters-settings:
     require-specific: true
   lll:
     line-length: 150
+  copyloopvar:
+    check-alias: true
 
 linters:
   disable-all: true
   enable:
-    - errcheck
-    - gosimple
-    - govet
-    - ineffassign
-    - staticcheck
-    - unused
     - asasalint
     - bodyclose
     - containedctx
     - contextcheck
+    - copyloopvar
     - cyclop
     - dogsled
+    - err113
+    - errcheck
     - errname
     - errorlint
     - exhaustive
-    - exportloopref
     - forbidigo
     - funlen
-    - gocritic
-    - gocyclo
-    - err113
-    - goimports
-    - mnd
-    - lll
-    - gomoddirectives
-    - goprintffuncname
+    - ginkgolinter
     #    - gochecknoinits
     - goconst
+    - gocritic
+    - gocyclo
+    - goimports
+    - gomoddirectives
+    - goprintffuncname
     - gosec
+    - gosimple
     - govet
     - grouper
+    - ineffassign
+    - interfacebloat
+    - lll
     - misspell
+    - mnd
     - nilerr
     - nlreturn
     - noctx
     - nolintlint
+    - nonamedreturns
     - prealloc
     - predeclared
     - promlinter
     - revive
-    - wastedassign
+    - staticcheck
+    - stylecheck
     - tagliatelle
     - tenv
     - testpackage
     - typecheck
     - unconvert
     - unparam
+    - unused
     - usestdlibvars
     - varnamelen
+    - wastedassign
     - whitespace
     - wsl
-    - ginkgolinter
-    - interfacebloat
-    - nonamedreturns
-    - stylecheck
