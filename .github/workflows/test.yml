@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: 'stable'
-      - run: go mod tidy && git diff --exit-code go.mod go.sum
+      - run: go mod tidy -diff
 
   test:
     runs-on: ubuntu-latest
