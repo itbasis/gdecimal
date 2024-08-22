@@ -1,4 +1,4 @@
-name: test
+name: Matrix tests
 
 on:
   push:
