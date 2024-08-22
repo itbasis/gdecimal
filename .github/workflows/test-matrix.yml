@@ -24,6 +24,7 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
 
+      - run: make go-dependencies
       - run: make go-test
 
       - name: Test Summary
