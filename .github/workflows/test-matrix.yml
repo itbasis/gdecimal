@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        go: ["1.20.x", "1.21.x", "oldstable", "stable"]
+        go: ["1.22.x", "1.23.x", "oldstable", "stable"]
         continueOnError: [false]
 #        include:
 #          - go: ">=1.23.0-rc.2"
