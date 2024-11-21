@@ -3,7 +3,7 @@ module github.com/itbasis/gdecimal
 go 1.22.8
 
 require (
-	github.com/onsi/ginkgo/v2 v2.21.0
+	github.com/onsi/ginkgo/v2 v2.22.0
 	github.com/onsi/gomega v1.35.1
 	github.com/shopspring/decimal v1.4.0
 )
