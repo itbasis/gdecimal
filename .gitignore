@@ -1,13 +1,20 @@
 .DS_Store
-
 tmp.*
 
 # Go
 bin/
+/build/
 junit-report.xml
 coverage.html
 .coverage.out
 .coverage-*.out
+
+# Reports
+ginkgo-coverage-*.out
+junit-report.xml
+
+# VSCode
+.vscode/
 
 # JetBrains
 .idea/*

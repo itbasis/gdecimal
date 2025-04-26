@@ -1,48 +1,9 @@
-#file: noinspection SpellCheckingInspection
+version: "2"
 run:
   concurrency: 4
   modules-download-mode: readonly
-
-# https://golangci-lint.run/usage/configuration/#linters-configuration
-
-issues:
-  exclude-rules:
-    - path: internal/converter/testdata/
-      linters:
-        - revive
-    - path: _test\.go
-      linters:
-        - stylecheck
-        - revive
-
-linters-settings:
-  mnd:
-    ignored-files:
-      - 'internal/converter/test-data/data\.go$'
-  gosec:
-    exclude-generated: true
-    severity: medium
-  varnamelen:
-    ignore-type-assert-ok: false
-    ignore-map-index-ok: false
-    ignore-names:
-      - d
-  ginkgolinter:
-    force-expect-to: true
-  govet:
-    enable-all: true
-    disable:
-      - fieldalignment
-  nolintlint:
-    require-explanation: true
-    require-specific: true
-  lll:
-    line-length: 150
-  copyloopvar:
-    check-alias: true
-
 linters:
-  disable-all: true
+  default: none
   enable:
     - asasalint
     - bodyclose
@@ -59,15 +20,12 @@ linters:
     - forbidigo
     - funlen
     - ginkgolinter
-    #    - gochecknoinits
     - goconst
     - gocritic
     - gocyclo
-    - goimports
     - gomoddirectives
     - goprintffuncname
     - gosec
-    - gosimple
     - govet
     - grouper
     - ineffassign
@@ -85,11 +43,8 @@ linters:
     - promlinter
     - revive
     - staticcheck
-    - stylecheck
     - tagliatelle
-    - tenv
     - testpackage
-    - typecheck
     - unconvert
     - unparam
     - unused
@@ -98,3 +53,55 @@ linters:
     - wastedassign
     - whitespace
     - wsl
+  settings:
+    copyloopvar:
+      check-alias: true
+    ginkgolinter:
+      force-expect-to: true
+    gosec:
+      severity: medium
+    govet:
+      disable:
+        - fieldalignment
+      enable-all: true
+    lll:
+      line-length: 150
+    mnd:
+      ignored-files:
+        - internal/converter/test-data/data\.go$
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+    varnamelen:
+      ignore-names:
+        - d
+      ignore-type-assert-ok: false
+      ignore-map-index-ok: false
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - revive
+        path: internal/converter/testdata/
+      - linters:
+          - revive
+          - staticcheck
+        path: _test\.go
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
